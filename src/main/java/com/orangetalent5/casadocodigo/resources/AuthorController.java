@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.orangetalent5.casadocodigo.domain.Author;
-import com.orangetalent5.casadocodigo.dto.AuthorForm;
-import com.orangetalent5.casadocodigo.dto.ResponseAuthorDTO;
+import com.orangetalent5.casadocodigo.dto.AuthorFormDTO;
 import com.orangetalent5.casadocodigo.repository.AuthorRepository;
 
 @RestController
@@ -24,10 +23,10 @@ public class AuthorController {
 	
 	@PostMapping
 	@Transactional
-	public ResponseEntity<ResponseAuthorDTO> create(@RequestBody @Valid AuthorForm form) {
+	public ResponseEntity<Void> create(@RequestBody @Valid AuthorFormDTO form) {
 		Author author = form.toEntity();
 		authRepository.save(author);
-		ResponseAuthorDTO dto = new ResponseAuthorDTO(author);
-		return ResponseEntity.ok().body(dto);
+		
+		return ResponseEntity.ok().build();
 	}
 }

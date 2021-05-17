@@ -10,7 +10,7 @@ import org.hibernate.validator.constraints.Length;
 
 import com.orangetalent5.casadocodigo.domain.Author;
 
-public class AuthorForm {
+public class AuthorFormDTO {
 	private Long id;
 
 	@NotNull
@@ -27,10 +27,10 @@ public class AuthorForm {
 	@Length(max = 400)
 	private String descricao;
 
-	public AuthorForm() {
+	public AuthorFormDTO() {
 	}
 
-	public AuthorForm(Long id, @NotNull @NotEmpty String nome, @NotNull @NotEmpty @Email String email,
+	public AuthorFormDTO(Long id, @NotNull @NotEmpty String nome, @NotNull @NotEmpty @Email String email,
 			@NotNull @NotEmpty @Length(max = 400) String descricao) {
 		this.id = id;
 		this.nome = nome;
