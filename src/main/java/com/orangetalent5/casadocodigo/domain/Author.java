@@ -27,6 +27,7 @@ public class Author {
 	
 	@Column(unique = true)
 	private String email;
+	
 	private String descricao;
 	@NotNull
 	private LocalDateTime instanteRegistro = LocalDateTime.now();

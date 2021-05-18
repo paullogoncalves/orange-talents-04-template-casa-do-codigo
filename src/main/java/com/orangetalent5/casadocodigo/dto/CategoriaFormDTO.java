@@ -4,6 +4,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import com.orangetalent5.casadocodigo.domain.Categoria;
+import com.orangetalent5.casadocodigo.resources.validation.UniqueValue;
 
 public class CategoriaFormDTO {
 
@@ -11,6 +12,7 @@ public class CategoriaFormDTO {
 
 	@NotNull
 	@NotEmpty(message = "Preenchimento obrigatório")
+	@UniqueValue(domainClass = Categoria.class, fieldName = "nome")
 	private String nome;
 
 	public CategoriaFormDTO() {

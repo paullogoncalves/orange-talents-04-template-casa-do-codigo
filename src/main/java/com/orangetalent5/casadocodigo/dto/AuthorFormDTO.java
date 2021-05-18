@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
 import com.orangetalent5.casadocodigo.domain.Author;
+import com.orangetalent5.casadocodigo.resources.validation.UniqueValue;
 
 
 public class AuthorFormDTO {
@@ -19,6 +20,7 @@ public class AuthorFormDTO {
 	@NotNull
 	@NotEmpty
 	@Email(message = "Preenchimento obrigatório")
+	@UniqueValue(domainClass = Author.class, fieldName = "email")
 	private String email;
 
 	@NotNull
