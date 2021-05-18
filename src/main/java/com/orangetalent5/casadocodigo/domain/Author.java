@@ -32,7 +32,6 @@ public class Author {
 	private LocalDateTime instanteRegistro = LocalDateTime.now();
 	
 	public Author() {
-		
 	}
 
 	public Author(Long id, String nome, String email, String descricao) {
