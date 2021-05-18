@@ -1,7 +1,5 @@
 package com.orangetalent5.casadocodigo.dto;
 
-import java.time.LocalDateTime;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -10,20 +8,21 @@ import org.hibernate.validator.constraints.Length;
 
 import com.orangetalent5.casadocodigo.domain.Author;
 
+
 public class AuthorFormDTO {
 	private Long id;
 
 	@NotNull
-	@NotEmpty
+	@NotEmpty(message = "Preenchimento obrigatório")
 	private String nome;
 
 	@NotNull
 	@NotEmpty
-	@Email
+	@Email(message = "Preenchimento obrigatório")
 	private String email;
 
 	@NotNull
-	@NotEmpty
+	@NotEmpty(message = "Preenchimento obrigatório")
 	@Length(max = 400)
 	private String descricao;
 
@@ -44,6 +43,10 @@ public class AuthorFormDTO {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	public String getEmail() {
+		return email;
 	}
 
 	public void setEmail(String email) {

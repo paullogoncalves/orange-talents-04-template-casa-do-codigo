@@ -2,6 +2,7 @@ package com.orangetalent5.casadocodigo.domain;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,10 +24,16 @@ public class Author {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
+	
+	@Column(unique = true)
 	private String email;
 	private String descricao;
 	@NotNull
 	private LocalDateTime instanteRegistro = LocalDateTime.now();
+	
+	public Author() {
+		
+	}
 
 	public Author(Long id, String nome, String email, String descricao) {
 		this.id = id;
