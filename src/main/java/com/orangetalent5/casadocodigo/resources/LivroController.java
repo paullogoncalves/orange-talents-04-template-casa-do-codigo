@@ -1,11 +1,15 @@
 package com.orangetalent5.casadocodigo.resources;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.orangetalent5.casadocodigo.domain.Livro;
 import com.orangetalent5.casadocodigo.dto.LivroFormDTO;
+import com.orangetalent5.casadocodigo.dto.LivroResponseDTO;
 import com.orangetalent5.casadocodigo.repository.LivroRepository;
 
 @RestController
@@ -32,6 +37,15 @@ public class LivroController {
 		livroRepository.save(livro);
 
 		return ResponseEntity.ok().build();
+	}
+	
+	@GetMapping
+	public ResponseEntity<List<LivroResponseDTO>> findAll() {
+		List<Livro> livro = livroRepository.findAll();
+		List<LivroResponseDTO> listDto = livro.stream().map(l -> new LivroResponseDTO(l))
+				.collect(Collectors.toList());
+		
+		return ResponseEntity.ok().body(listDto);
 	}
 
 }
