@@ -24,10 +24,14 @@ public class Estado {
 	@JoinColumn(name = "pais_id")
 	private Pais pais;
 
+	public Estado() {
+		
+	}
 	
-	public Estado(String nomeEstado, Pais pais) {
-		this.nome = nomeEstado;
+	public Estado(String nome, Pais pais) {
+		this.nome = nome;
 		this.pais = pais;
 	}
+
 
 }

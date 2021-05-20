@@ -17,21 +17,21 @@ public class Pais {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(unique = true)
 	@NotBlank(message = "Campo obrogatório")
 	private String nome;
-	
+
 	@OneToMany(mappedBy = "pais")
 	private List<Estado> estado = new ArrayList<>();
 
 	public Pais() {
-		// TODO Auto-generated constructor stub
+
 	}
-	
+
 	public Pais(@NotBlank(message = "Campo obrogatório") String nome) {
 		this.nome = nome;
-		
+
 	}
 
 }
